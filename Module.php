@@ -19,18 +19,20 @@ class Module extends \kouosl\base\Module
 
         // custom initialization code goes here
     }
+
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        switch ($this->namespace)
-        {
-            case 'backend':{
+        switch ($this->namespace) {
+            case 'backend': {
 
-            };break;
-            case 'frontend':{
+            };
+                break;
+            case 'frontend': {
 
-            };break;
-            case 'api':{
+            };
+                break;
+            case 'api': {
 
                 $behaviors['authenticator'] = [
                     'class' => CompositeAuth::className(),
@@ -40,17 +42,37 @@ class Module extends \kouosl\base\Module
                         QueryParamAuth::className(),
                     ],
                 ];
-            };break;
-            case 'console':{
+            };
+                break;
+            case 'console': {
 
-            };break;
-            default:{
-                throw new HttpException(500,'behaviors'.$this->namespace);
-            };break;
+            };
+                break;
+            default: {
+                throw new HttpException(500, 'behaviors' . $this->namespace);
+            };
+                break;
         }
 
         return $behaviors;
 
+    }
+
+    public function registerTranslations()
+    {
+        Yii::$app->i18n->translations['user/*'] = [
+            'class' => 'yii\i18n\PhpMessageSource',
+            'sourceLanguage' => 'en-US',
+            'basePath' => '@kouosl/user/messages',
+            'fileMap' => [
+                'user/user' => 'user.php',
+            ],
+        ];
+    }
+
+    public static function t($category, $message, $params = [], $language = null)
+    {
+        return Yii::t('user/' . $category, $message, $params, $language);
     }
 
 
