@@ -3,6 +3,7 @@
 namespace kouosl\user\controllers\api;
 
 use kouosl\user\models\User;
+use kouosl\site\models\SignupForm;
 use Yii;
 
 class UsersController extends DefaultController {
@@ -31,31 +32,27 @@ class UsersController extends DefaultController {
 	
 	public function actionCreate(){
 
-		$postParams = yii::$app->request->post();
-		
-		$model = new User();
-	
-		
-		if($model->load($postParams,'') && $model->validate()){
-			if($model->save())
-			    return ['status' => 1];
-			else
-			    return ['status' => 500];
-		}
-		else
-			return ['status' => 100,'message' => 'Parametre Hatası'];
-		
+        $postParams = json_decode(Yii::$app->request->getRawBody(), true);        
+        $model = new SignupForm();
+
+        if ($model->load($postParams,'') && $model->validate()) {
+            if ($user = $model->signup()) {            
+                return $user;
+            }
+        }else{
+            return ['status' => 500];
+        }
 	}
 	
 	public function actionUpdate($id){
 
-		$postParams = yii::$app->request->post();
+		$postParams = json_decode(Yii::$app->request->getRawBody(), true);
 		
 		$model = User::findOne($id);
 
 		if($model = $this->LoadModel($model, $postParams)){
 				if($model->save())
-					return ['status' => 1];
+					return $model;
 				else 
 					return ['status' => 101,'message' => $model->errors];
 		}else
