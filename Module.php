@@ -75,5 +75,25 @@ class Module extends \kouosl\base\Module
         return Yii::t('user/' . $category, $message, $params, $language);
     }
 
+    public static function initRules(){
+        
+        return $rules = [
+            [
+                'class' => 'yii\rest\UrlRule',
+                'controller' => [
+                    'user/users',
+                ],
+                'tokens' => [
+                    '{id}' => '<id:\\w+>'
+                ],
+                /*'patterns' => [
+                    'GET new-action' => 'new-action'
+                ]*/
+            ],
+
+        ] ;
+
+    }
+
 
 }
