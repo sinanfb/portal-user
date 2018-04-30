@@ -1,6 +1,6 @@
 {
     "name": "kouosl/portal-user",
-    "description": "User control module for KOUOSL",
+    "description": "User module for KOUOSL PORTAL",
     "type": "yii2-extension",
     "keywords": ["yii2", "yii 2", "user", "users", "module", "modules"],
     "license": "BSD-3-Clause",
