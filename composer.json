@@ -1,13 +1,17 @@
 {
-    "name": "kouosl/user",
-    "description": "Yii2 KouOsl user Module Integration",
+    "name": "kouosl/portal-user",
+    "description": "User control modulu for KOUOSL",
     "type": "yii2-extension",
-    "keywords": ["yii2", "yii 2", "samples", "sample", "module", "modules"],
+    "keywords": ["yii2", "yii 2", "user", "users", "module", "modules"],
     "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "İbrahim Aşık",
-            "email": "info@kouosl.com.tr"
+            "email": "info@kouosl.org"
+        },
+        {
+            "name": "Ekrem HATİPOĞLU",
+            "email": "ekrem.hatipoglu@outlook.com"
         }
     ],
     "autoload": {
