@@ -12,6 +12,10 @@
         {
             "name": "Ekrem HATİPOĞLU",
             "email": "ekrem.hatipoglu@outlook.com"
+        },
+		{
+            "name": "Sinan Yüzügüldü",
+            "email": "info@kouosl.org"
         }
     ],
     "autoload": {
